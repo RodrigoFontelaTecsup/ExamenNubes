@@ -2,7 +2,7 @@ import pandas as pd
 from flask import Flask, jsonify
 
 ratings = pd.read_csv('ratings.csv')
-print(movies.head())
+movies = pd.read_csv('movies.csv')
 
 app = Flask(__name__)
 
@@ -14,8 +14,8 @@ def index():
 
 @app.route("/api")
 def api():
-    rating_dict = ratings.to_dict(orient='records')
-    return jsonify(rating_dict)
+    movie_dict = movies.to_dict(orient='records')
+    return jsonify(movie_dict)
 
 
 if __name__ == "__main__":
