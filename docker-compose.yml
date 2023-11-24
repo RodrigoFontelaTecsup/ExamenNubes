@@ -8,5 +8,3 @@ services:
     build: ./www
     ports:
       - "80:80"
-  redis:
-    image: "redis:alpine"
