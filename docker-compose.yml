@@ -1,12 +1,14 @@
 version: '3'
 services:
   api:
+    image: 127.0.0.1:5001/demoapi
     build: ./api
     ports:
       - "5000:5000"
     environment:
       - REDIS_URL=redis://redis:6379
   web:
+    image: 127.0.0.1:5001/demowww
     build: ./www
     ports:
       - "80:80"
@@ -14,3 +16,5 @@ services:
       - API_ENDPOINT=http://api:5000/api/movies
   redis:
     image: redis
+networks:
+  red:

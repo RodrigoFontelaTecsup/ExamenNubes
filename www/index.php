@@ -11,8 +11,23 @@
 <body class="container">
     <h1>Pelicula API</h1>
 
+    <!-- Formulario para ingresar el número de películas -->
+    <form method="post" action="">
+        <label for="numMovies">Número de películas:</label>
+        <input type="number" name="numMovies" id="numMovies" min="1" required>
+        <button type="submit">Mostrar Películas</button>
+    </form>
+
     <?php
-    $api_endpoint_movies = $_ENV["API_ENDPOINT"] ?: "http://localhost:5000/api/movies";
+    // Verificar si se envió el formulario
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $numMovies = $_POST["numMovies"];
+        $api_endpoint_movies = $_ENV["API_ENDPOINT"] . "/$numMovies" ?: "http://localhost:5000/api/movies/$numMovies";
+    } else {
+        // Si no se envió el formulario, obtener todas las películas
+        $api_endpoint_movies = $_ENV["API_ENDPOINT"] ?: "http://localhost:5000/api/movies";
+    }
+
     $json_movies = @file_get_contents($api_endpoint_movies);
 
     if ($json_movies !== false) {
