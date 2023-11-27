@@ -1,4 +1,6 @@
-FROM python:3.8
+FROM python:3.9
+
+ENV REDIS_URL="redis://localhost:6379"
 
 WORKDIR /app/api
 

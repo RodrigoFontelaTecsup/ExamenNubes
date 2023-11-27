@@ -12,7 +12,7 @@
     <h1>Pelicula API</h1>
 
     <?php
-    $api_endpoint_movies = $_ENV["API_ENDPOINT"] ?: "http://localhost:5000/api";
+    $api_endpoint_movies = $_ENV["API_ENDPOINT"] ?: "http://localhost:5000/api/movies";
     $json_movies = @file_get_contents($api_endpoint_movies);
 
     if ($json_movies !== false) {
